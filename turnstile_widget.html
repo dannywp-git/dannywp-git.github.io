@@ -12,6 +12,7 @@
       class="cf-turnstile"
       data-sitekey="0x4AAAAAAA2BPprW1hCFPlbL"
       data-callback="onTurnstileSuccess"
+      error-callback="onTurnstileError"
       retry="never"
       refresh-expired="manual"
       theme="dark"
@@ -23,6 +24,12 @@
       // Pass the token to the Flutter WebView
       if (window.TurnstileCallback) {
         window.TurnstileCallback.postMessage(token);
+      }
+    }
+    function onTurnstileError(error) {
+      // Pass the token to the Flutter WebView
+      if (window.TurnstileErrorCallback) {
+        window.TurnstileErrorCallback.postMessage(error);
       }
     }
   </script>
