@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Turnstile Widget</title>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</head>
+<body>
+  <div id="turnstile-container">
+    <div 
+      class="cf-turnstile"
+      data-sitekey="0x4AAAAAAA2BPprW1hCFPlbL"
+      data-callback="onTurnstileSuccess"
+    ></div>
+  </div>
+  <script>
+    function onTurnstileSuccess(token) {
+      // Pass the token to the Flutter WebView
+      if (window.TurnstileCallback) {
+        window.TurnstileCallback.postMessage(token);
+      }
+    }
+  </script>
+</body>
+</html>
